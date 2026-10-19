@@ -1,3 +1,4 @@
+from function import Function
 from shared import *
 
 def pr_str(data):
@@ -13,6 +14,8 @@ def pr_str(data):
             return "(" + " ".join(pr_str(v) for v in vv) + ")"
         case None:
             return "nil"
+        case Function():
+            return "#<function>"
         case data if callable(data):
             return "#<function>"
         case _:
