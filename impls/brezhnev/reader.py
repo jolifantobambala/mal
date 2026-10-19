@@ -37,7 +37,17 @@ class Reader:
         try:
             return int(t)
         except ValueError:
-            return Symbol(t)
+            pass
+
+        match t:
+            case "nil":
+                return None
+            case "true":
+                return True
+            case "false":
+                return False
+            case _:
+                return Symbol(t)
     
     def read_form(self):
         t = self.peek()

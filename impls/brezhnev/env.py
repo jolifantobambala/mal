@@ -1,9 +1,12 @@
 from shared import Symbol
 
 class Env:
-    def __init__(self, outer):
+    def __init__(self, outer, binds=None, exprs=None):
         self.outer = outer
         self.data = {}
+        if binds:
+            for key, expr in zip(binds, exprs):
+                self.set(key, expr)
 
     def set(self, key: Symbol, v):
         self.data[key.name] = v
